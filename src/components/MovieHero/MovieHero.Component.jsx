@@ -3,7 +3,7 @@ import { MovieContext } from "../../context/Movie.context";
 import MovieInfo from "./MovieInfo.Component";
 
 const MovieHero = () => {
-  const { movie } = useContext(MovieContext);
+  const { movie, rentMovie, buyMovie } = useContext(MovieContext);
 
   const genres = movie.genres?.map(({ name }) => name).join(", ");
 
@@ -30,15 +30,20 @@ const MovieHero = () => {
             </div>
           </div>
           <div className="flex items-center gap-3 md:px-4 md:w-screen text-xl px-4">
-            <button className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg">
+            <button
+              onClick={rentMovie}
+              className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg"
+            >
               Rent ₹149
             </button>
-            <button className="bg-red-600 w-full py-3 text-white font-semibold rounded-lg">
+            <button
+              onClick={buyMovie}
+              className="bg-red-600 w-full py-3 text-white font-semibold rounded-lg"
+            >
               Buy ₹599
             </button>
           </div>
         </div>
-
         {/* Large Screen Device */}
         <div
           className="relative hidden w-full lg:block"
@@ -51,7 +56,6 @@ const MovieHero = () => {
                 "linear-gradient(90deg, rgb(34, 34, 34) 14.95%, rgba(34, 34, 34) 30.3%, rgba(34, 34, 34, 0.90) 38.3%, rgba(34, 34, 34, 0.60) 58.3%, rgba(34, 34, 34, 0.04) 100%)",
             }}
           />
-
           <div className="absolute z-30 left-24 top-10 flex items-center gap-10">
             <div className="w-64 h-96">
               <img
@@ -74,5 +78,4 @@ const MovieHero = () => {
     </>
   );
 };
-
 export default MovieHero;
